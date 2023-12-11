@@ -1,0 +1,10 @@
+[module/date]
+  type = internal/date
+  interval = 10
+  
+  time = "%H:%M"
+  date = "%A %d %b"
+  
+  label = %date%, %time%
+  label-padding = 2
+  label-font = 3

@@ -1,0 +1,17 @@
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-padding = 2
+format-volume-margin = 0
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-font = 3
+
+use-ui-max = false
+interval = 5
+
+ramp-volume-0 = "  "
+
+format-muted-padding = 2
+label-muted = "  %{T3}muted%{T-}"
+

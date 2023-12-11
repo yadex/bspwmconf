@@ -1,0 +1,23 @@
+[module/mpd]
+ type = internal/mpd
+ host = 127.0.0.1
+ port = 6600
+ format-online = "<icon-prev> <toggle> <icon-next> <label-song>"
+ format-online-padding = 2
+ label-song-padding = 1
+ label-song = %artist%:%title%
+ label-song-font = 4
+ 
+ format-offline = <label-offline>
+ label-offline =  offline
+ format-offline-foreground = ${colors.foreground}
+ format-offline-background = ${colors.background}
+ 
+ icon-prev = " "
+ icon-stop = 
+ icon-play = ""
+ icon-pause = " "
+ icon-next = 
+ 
+ label-song-maxlen = 45
+ label-song-ellipsis = true

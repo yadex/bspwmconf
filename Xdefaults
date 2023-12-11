@@ -1,0 +1,95 @@
+
+URxvt*externalBorder: 0
+URxvt*internalBorder: 2
+URxvt*borderLess:     false
+URxvt.iso14755:       false
+URxvt.iso14755_52:    false
+URxvt.scrollBar:      false
+urxvt*depth:          32
+
+URxvt.saveLines:      9999
+!!-字间距 
+URxvt*letterSpace:      -2
+URxvt*skipBuiltinGlyphs:  true
+
+URxvt*font:xft:RecMonoCasual:size=16,xft:Iosevka Term:size=16,xft:Sarasa Term SC:size=16
+!URxvt*boldFont:xft:Lilex Nerd Font :size=12,,xft:Hack Nerd Font:size=12,xft:Sarasa Mono SC:size=12
+
+
+
+
+
+!!perl扩展
+URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard,
+URxvt.colorUL: #8be9fd
+
+!!url-select
+URxvt.keysym.C-u: perl:url-select:select_next
+
+!!浏览器
+URxvt.url-select.launcher: firefox
+URxvt.url-select.underline: true
+
+!!font-resize(Ctrl-j,Ctrl-k)
+URxvt.resize-font.smaller:C-j
+URxvt.resize-font.bigger: C-k
+
+!!keyboard-select(Alt+Esc):
+URxvt.keysym.M-Escape:  perl:keyboard-select:activate
+URxvt.keysym.C-s: perl:keyboard-select:search
+
+!!Matcher
+URxvt.url-launcher:firefox
+URxvt.matcher.button: 1
+
+!!clipboard
+URxvt.clipboard.autocopy: true
+!URxvt.keysym.S-c: perl:clipboard:copy
+!URxvt.keysym.C-v: perl:clipboard:paste
+
+
+
+!theme
+*.foreground:  #d9e6f2
+URxvt*.background: #2e3440
+*.cursorColor: #d9e6f2
+!
+! Black
+*.color0:      #000000
+*.color8:      #555
+!
+! Red
+*.color1:      #b87a7a
+*.color9:      #dbbdbd
+!
+! Green
+*.color2:      #7ab87a
+*.color10:     #c7f8c7
+!
+! Yellow
+*.color3:      #b8b87a
+*.color11:     #dbdbbd
+!
+! Blue
+*.color4:      #7a7ab8
+*.color12:     #bdbddb
+!
+! Magenta
+*.color5:      #f3c1ff
+*.color13:     #dbbddb
+!
+! Cyan
+*.color6:      #7ab8b8
+*.color14:     #bddbdb
+!
+! White
+*.color7:      #d9d9d9
+*.color15:     #ffffff
+
+
+!!Xft settings
+Xft.dpi:           120
+Xft.antialias:     true
+Xft.rgba:          rgb
+Xft.hinting:       true
+Xft.hintstyle:     hintslight

@@ -1,0 +1,235 @@
+#! /usr/bin/fish
+# wm independent hotkeys
+#=======================================
+#
+# Basic Setting terminal emulator
+#
+#=======================================
+#
+alt + Return
+  alacritty
+
+#alacritty float
+alt + y
+   alacritty --class alacritty_float
+
+
+#alt +shift + Return
+#	kitty
+
+#kitty float
+#alt + shift + y
+#  kitty --name kitty_float
+
+
+alt  + {t,shift + t,shift + space,f}
+    bspc node -t '~{tiled,pseudo_tiled,floating,fullscreen}'
+    #bspc node -t '~{floating,fullscreen}'
+
+
+# make sxhkd reload its configuration files:
+super + shift + Escape
+	pkill -USR1 -x sxhkd
+
+
+
+alt + space
+  bspc node -f prev.local
+
+
+
+
+#alt + shift + space
+#  bspc ndoe -t floating
+
+#=======================================
+#
+#             program launcher
+#
+#=======================================
+#super + @space
+
+
+### A ----------> kill
+alt + shift + a
+	bspc node -c
+   
+
+### B ----------> move window to next workspace and focus it 
+alt + {b,n}
+ bspc desktop -f {prev, next}
+ 
+alt + shift + {b,n}
+    bspc node -d {prev, next} -f
+
+
+### C ---------> draw terminal
+alt + c
+  draw
+
+### D ---------> rofi
+alt + d
+  rofi_drun
+
+alt + shift + d
+  rofi_run
+
+### E ---------> 
+
+#alt + shift + f
+#  firefox
+
+### G ---------> alsa and pulseaudio
+alt + g
+  alacritty --class alacritty_float -e pulsemixer
+
+#alt + shift + g
+#  alacritty --class alacritty_float -e alsamixer
+
+### I ---------> htop
+alt + i
+  alacritty --class alacritty_float -e htop
+
+alt + shift + i
+  alacritty --class alacritty_float -e radeontop
+
+### HJKL-------> focus the node in the given direction
+#alt + {h,j,k,l}
+	#bspc node -f {west,south,north,east}
+
+alt + {_,shift+} {h,j,k,l}
+  bspc node -{f,s} {west, south,north,east}
+
+### M
+#----------> alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+alt + m
+  menu_mpd
+
+alt + shift + m
+  alacritty --class alacritty_float -e ncmpcpp
+
+
+
+
+### P ---------------> scrot screenshot and lock screen
+alt + p
+  menu_screenshot
+
+alt + shift + p
+  i3lock-fancy
+
+### Q ---------------> rofi_powermenu 
+alt + shift + q
+  powermenu
+
+# R ----------> restart bspwm
+alt + shift + r
+	bspc  wm  -r
+
+
+# U ---------------> node calculator
+alt + u
+  alacritty --class math  -e node
+
+
+# X ----------------> ranger
+alt + x
+  alacritty --class alacritty_float -e ranger
+alt + shift + x
+  alacritty --class alacritty_float -e ranger
+
+
+
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+
+
+
+
+
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+
+
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest
+
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+# focus the next/previous desktop in the current monitor
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+#
+# preselect
+#
+
+# preselect the direction
+
+# preselect the ratio
+super  + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super +  {h,j,k,l}
+	bspc node -z {left -20 0,top 0 20,top 0 -20,left 20 0}
+
+# contract a window by moving one of its side inward
+super + alt  + {h,j,k,l}
+	bspc node -z {right -20 0,bottom 0 20,bottom 0 -20,right 20 0}
+
+# move a floating window
+super + shift + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+#super + {Left,Down,Up,Right}
+#	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
